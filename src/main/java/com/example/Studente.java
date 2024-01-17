@@ -4,10 +4,19 @@ public class Studente
 {
     String nome = "";
 
-    Studente(String nome)
+    public Studente(String nome)
     {
         this.nome = nome;
     }
+    
+    public Studente() {
+    }
+
+    public void setNome(String nome) 
+    {
+        this.nome = nome;
+    }
+    
     public String getNome() 
     {
         return nome;

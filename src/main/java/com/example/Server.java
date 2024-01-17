@@ -9,6 +9,8 @@ import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 public class Server 
 {
     public static void main(String[] args) 
@@ -26,11 +28,12 @@ public class Server
 
             // Accettazione della connessione del client
             Socket clientSocket = serverSocket.accept();
-            BufferedReader reader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
             DataOutputStream out = new DataOutputStream(clientSocket.getOutputStream());
             System.out.println("Client connesso: ");
 
-            out.writeBytes(classe.toString() + "\n");
+            ObjectMapper objectMapper =new ObjectMapper();
+            String s =objectMapper.writeValueAsString(classe);
+            out.writeBytes(s + "\n");
         } 
         catch (IOException e) 
         {
